@@ -7,9 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "Message.h"
 
-@interface ViewController () <MHMulticastSocketDelegate>
+#define GLOBAL @"global"
+
+@interface ViewController () <MHMulticastSocketDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) MHMulticastSocket *socket;
 
 @end
@@ -21,8 +25,11 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.socket = [[MHMulticastSocket alloc] initWithServiceType:@"MultihopChat"];
-    [self.socket joinGroup:@"global"];
+    [self.socket joinGroup:GLOBAL];
     [self.socket joinGroup:[self.socket getOwnPeer]];
+    
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,16 +45,45 @@
 
 
 - (void)mhMulticastSocket:(MHMulticastSocket *)mhMulticastSocket
-         didReceivePacket:(MHPacket *)packet
-{
-    NSString *msg = [[NSString alloc] initWithData:packet.data encoding:NSUTF8StringEncoding];
-    if ([msg isEqualToString:@"discovery"]) {
+         didReceivePacket:(MHPacket *)packet {
+    
+    Message* msg = [NSKeyedUnarchiver unarchiveObjectWithData:packet.data];
+    
+    if ([msg.type isEqualToString:@"discovery"]) {
+        
+        Message* sentMsg = [[Message alloc] initWithType:@"discovery-reply"
+                                            withContent:[UIDevice currentDevice].name];
+        
         MHPacket* sentPacket = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
                                                withDestinations:[[NSArray alloc] initWithObjects:packet.source, nil]
-                                                       withData:[@"discovery-reply" dataUsingEncoding:NSUTF8StringEncoding]];
+                                                       withData:[NSKeyedArchiver archivedDataWithRootObject:sentMsg]];
+        
         NSError *error;
+        
         [self.socket sendPacket:sentPacket error:&error];
+        
+    } else if ([msg.type isEqualToString:@"discovery-reply"]) {
+        
+        NSString* displayName = (NSString*)msg.content;
+        
+        NSLog(displayName);
+        
     }
+}
+
+- (IBAction)send:(id)sender {
+    
+    Message* msg = [[Message alloc] initWithType:@"discovery"
+                                     withContent:nil];
+    
+    MHPacket* packet = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
+                                       withDestinations:[[NSArray alloc] initWithObjects:GLOBAL, nil]
+                                               withData:[NSKeyedArchiver archivedDataWithRootObject:msg]];
+    
+    NSError *error;
+    
+    [self.socket sendPacket:packet error:&error];
+    
 }
 
 @end

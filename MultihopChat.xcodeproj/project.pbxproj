@@ -30,6 +30,8 @@
 		AA05F37C1AC5C6F900909DE1 /* MHPeer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05F36B1AC5C6F900909DE1 /* MHPeer.m */; };
 		AA05F37D1AC5C6F900909DE1 /* MHUnicastRoutingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05F36D1AC5C6F900909DE1 /* MHUnicastRoutingProtocol.m */; };
 		AA05F37E1AC5C6F900909DE1 /* MHUnicastSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05F36F1AC5C6F900909DE1 /* MHUnicastSocket.m */; };
+		AA05F3811AE69A3A00909DE1 /* DiscoveryReply.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05F3801AE69A3A00909DE1 /* DiscoveryReply.m */; };
+		AA05F3841AE69BB600909DE1 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05F3831AE69BB600909DE1 /* Message.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,10 @@
 		AA05F36D1AC5C6F900909DE1 /* MHUnicastRoutingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUnicastRoutingProtocol.m; sourceTree = "<group>"; };
 		AA05F36E1AC5C6F900909DE1 /* MHUnicastSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHUnicastSocket.h; sourceTree = "<group>"; };
 		AA05F36F1AC5C6F900909DE1 /* MHUnicastSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUnicastSocket.m; sourceTree = "<group>"; };
+		AA05F37F1AE69A1600909DE1 /* DiscoveryReply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryReply.h; sourceTree = "<group>"; };
+		AA05F3801AE69A3A00909DE1 /* DiscoveryReply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryReply.m; sourceTree = "<group>"; };
+		AA05F3821AE69BAB00909DE1 /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		AA05F3831AE69BB600909DE1 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,10 @@
 				AA05F2AE1AC5C52000909DE1 /* LaunchScreen.xib */,
 				AA05F2A31AC5C52000909DE1 /* MultihopChat.xcdatamodeld */,
 				AA05F29C1AC5C52000909DE1 /* Supporting Files */,
+				AA05F37F1AE69A1600909DE1 /* DiscoveryReply.h */,
+				AA05F3801AE69A3A00909DE1 /* DiscoveryReply.m */,
+				AA05F3821AE69BAB00909DE1 /* Message.h */,
+				AA05F3831AE69BB600909DE1 /* Message.m */,
 			);
 			path = MultihopChat;
 			sourceTree = "<group>";
@@ -309,12 +319,14 @@
 				AA05F3721AC5C6F900909DE1 /* MH6ShotsScheduler.m in Sources */,
 				AA05F37D1AC5C6F900909DE1 /* MHUnicastRoutingProtocol.m in Sources */,
 				AA05F2A21AC5C52000909DE1 /* AppDelegate.m in Sources */,
+				AA05F3811AE69A3A00909DE1 /* DiscoveryReply.m in Sources */,
 				AA05F37B1AC5C6F900909DE1 /* MHPacket.m in Sources */,
 				AA05F29F1AC5C52000909DE1 /* main.m in Sources */,
 				AA05F37E1AC5C6F900909DE1 /* MHUnicastSocket.m in Sources */,
 				AA05F3701AC5C6F900909DE1 /* MH6ShotsProtocol.m in Sources */,
 				AA05F37A1AC5C6F900909DE1 /* MHMultipeerWrapper.m in Sources */,
 				AA05F2A81AC5C52000909DE1 /* ViewController.m in Sources */,
+				AA05F3841AE69BB600909DE1 /* Message.m in Sources */,
 				AA05F3761AC5C6F900909DE1 /* MHIdGenerator.m in Sources */,
 				AA05F3711AC5C6F900909DE1 /* MH6ShotsSchedule.m in Sources */,
 				AA05F3771AC5C6F900909DE1 /* MHLocationManager.m in Sources */,
@@ -517,6 +529,7 @@
 				AA05F2C11AC5C52000909DE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA05F2C21AC5C52000909DE1 /* Build configuration list for PBXNativeTarget "MultihopChatTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +538,7 @@
 				AA05F2C41AC5C52000909DE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
