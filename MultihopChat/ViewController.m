@@ -11,7 +11,7 @@
 
 #define GLOBAL @"global"
 
-@interface ViewController () <MHMulticastSocketDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ViewController () <MHMulticastSocketDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) MHMulticastSocket *socket;
@@ -21,15 +21,17 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    NSLog(@"HELLO");
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.socket = [[MHMulticastSocket alloc] initWithServiceType:@"MultihopChat"];
+    self.socket = [[MHMulticastSocket alloc] initWithServiceType:@"chat"];
+    self.socket.delegate = self;
     [self.socket joinGroup:GLOBAL];
     [self.socket joinGroup:[self.socket getOwnPeer]];
     
-    [self.tableView setDelegate:self];
-    [self.tableView setDataSource:self];
+    //[self.tableView setDelegate:self];
+    //[self.tableView setDataSource:self];
 }
 
 - (void)didReceiveMemoryWarning {
