@@ -21,7 +21,7 @@
 @implementation Message
 
 - (instancetype)initWithType:(NSString *)type
-              withContent:(NSObject *)content
+                 withContent:(NSObject *)content
 {
     self = [super init];
     if (self)
