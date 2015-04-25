@@ -36,6 +36,9 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
+    connectedPeers = [NSMutableArray array];
+    self.navigationItem.title = @"Connected Peers";
+    
     self.socket = [[MHMulticastSocket alloc] initWithServiceType:@"chat"];
     self.socket.delegate = self;
     [self.socket joinGroup:GLOBAL];
@@ -86,19 +89,24 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    return [connectedPeers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
+    static NSString *MyIdentifier = @"MyIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+    }
+    
+    NSString *cellValue = [connectedPeers objectAtIndex:indexPath.row];
+    cell.textLabel.text = cellValue;
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
