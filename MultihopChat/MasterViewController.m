@@ -38,6 +38,8 @@
     
     connectedPeers = [NSMutableArray array];
     self.navigationItem.title = @"Connected Peers";
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
     
     self.socket = [[MHMulticastSocket alloc] initWithServiceType:@"chat"];
     self.socket.delegate = self;
@@ -243,6 +245,8 @@
     
     Message* msg = [NSKeyedUnarchiver unarchiveObjectWithData:packet.data];
     
+    NSLog(@"Hello");
+    
     if ([msg.type isEqualToString:@"discovery"]) {
         
         Message* sentMsg = [[Message alloc] initWithType:@"discovery-reply"
@@ -260,9 +264,23 @@
         
         NSString* displayName = (NSString*)msg.content;
         
-        NSLog(displayName);
+        [connectedPeers addObject:displayName];
+        [self.tableView reloadData];
         
     }
+}
+
+- (IBAction)discover:(id)sender {
+    Message* msg = [[Message alloc] initWithType:@"discovery"
+                                     withContent:nil];
+    
+    MHPacket* packet = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
+                                       withDestinations:[[NSArray alloc] initWithObjects:GLOBAL, nil]
+                                               withData:[NSKeyedArchiver archivedDataWithRootObject:msg]];
+    
+    NSError *error;
+    
+    [self.socket sendPacket:packet error:&error];
 }
 
 @end
