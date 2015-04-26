@@ -59,6 +59,8 @@
 }
 
 - (void)discoverPeers:(id)sender {
+    [self.objects removeAllObjects];
+    
     Message* msg = [[Message alloc] initWithType:@"discovery"
                                      withContent:nil];
     
@@ -79,6 +81,7 @@
         Peer *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
+        [controller setSocket:self.socket];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
@@ -152,6 +155,10 @@
             [self.objects addObject:peer];
             [self.tableView reloadData];
         }
+        
+    } else if ([msg.type isEqualToString:@"chat-text"]) {
+        
+        [self.detailViewController addMessage:(NSString *)msg.content];
         
     }
 }

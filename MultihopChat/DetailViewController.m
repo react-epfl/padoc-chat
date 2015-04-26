@@ -8,6 +8,10 @@
 
 #import "DetailViewController.h"
 
+#import "MHPacket.h"
+#import "Message.h"
+#import "Peer.h"
+
 @interface DetailViewController ()
 
 @end
@@ -43,7 +47,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)addMessage:(NSString *)message {
+//    self.textView.text = message;
+    [self.textView setText:message];
+    self.textField.text = message;
+}
+
 - (IBAction)send:(id)sender {
+    Message* msg = [[Message alloc] initWithType:@"chat-text"
+                                     withContent:self.textField.text];
+    
+    MHPacket* packet = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
+                                       withDestinations:[[NSArray alloc] initWithObjects:[self.detailItem peerId], nil]
+                                               withData:[NSKeyedArchiver archivedDataWithRootObject:msg]];
+    
+    NSError *error;
+    
+    [self.socket sendPacket:packet error:&error];
+    
+    self.textField.text = nil;
 }
 
 @end
