@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "Message.h"
+#import "Peer.h"
 
 #define GLOBAL @"global"
 
@@ -101,8 +102,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    NSString *cellValue = [connectedPeers objectAtIndex:indexPath.row];
-    cell.textLabel.text = cellValue;
+    Peer *peer = [connectedPeers objectAtIndex:indexPath.row];
+    cell.textLabel.text = peer.displayName;
     return cell;
 }
 
@@ -245,8 +246,6 @@
     
     Message* msg = [NSKeyedUnarchiver unarchiveObjectWithData:packet.data];
     
-    NSLog(@"Hello");
-    
     if ([msg.type isEqualToString:@"discovery"]) {
         
         Message* sentMsg = [[Message alloc] initWithType:@"discovery-reply"
@@ -264,8 +263,12 @@
         
         NSString* displayName = (NSString*)msg.content;
         
-        [connectedPeers addObject:displayName];
-        [self.tableView reloadData];
+        Peer *peer = [[Peer alloc] initWithPeerId:packet.source withDisplayName:displayName];
+        
+        if (![connectedPeers containsObject:peer]) {
+            [connectedPeers addObject:peer];
+            [self.tableView reloadData];
+        }
         
     }
 }
