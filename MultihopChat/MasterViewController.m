@@ -11,6 +11,7 @@
 
 #import "Message.h"
 #import "Peer.h"
+#import "ChatMessage.h"
 
 #define GLOBAL @"global"
 
@@ -171,7 +172,29 @@
         
     } else if ([msg.type isEqualToString:@"chat-text"]) {
         
+        // Retrieve the peer that sent the message
+        
         [self.detailViewController addMessage:(NSString *)msg.content];
+        
+        Peer *peer = nil;
+        for (int i = 0; i < self.objects.count; ++i) {
+            if ([[self.objects[i] peerId] isEqualToString:packet.source]) {
+                peer = self.objects[i];
+            }
+        }
+        
+        if (peer != nil) {
+            
+            ChatMessage *message = [[ChatMessage alloc] initWithSource:packet.source
+                                                              withDate:[NSDate date]
+                                                           withContent:(NSString *)msg.content];
+            
+            [peer addMessage:message];
+            
+            if ([self.detailViewController.detailItem isEqual:peer]) {
+                // Refresh the detail view
+            }
+        }
         
     }
 }

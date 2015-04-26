@@ -12,6 +12,7 @@
 
 @property (nonatomic, readwrite, strong) NSString *peerId;
 @property (nonatomic, readwrite, strong) NSString *displayName;
+@property (nonatomic, readwrite, strong) NSMutableArray *chatMessages;
 
 @end
 
@@ -19,39 +20,29 @@
 @implementation Peer
 
 - (instancetype)initWithPeerId:(NSString *)peerId
-               withDisplayName:(NSString *)displayName
-{
+               withDisplayName:(NSString *)displayName {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         self.peerId = peerId;
         self.displayName = displayName;
+        self.chatMessages = [NSMutableArray array];
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
-        self.peerId = [decoder decodeObjectForKey:@"peerId"];
-        self.displayName = [decoder decodeObjectForKey:@"displayName"];
-    }
-    return self;
+- (void)addMessage:(ChatMessage *)message {
+    [self.chatMessages addObject:message];
 }
 
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:self.peerId forKey:@"peerId"];
-    [encoder encodeObject:self.displayName forKey:@"displayName"];
-}
-
-
-- (void)dealloc
-{
+- (void)dealloc {
     self.peerId = nil;
     self.displayName = nil;
+    
+    [self.chatMessages removeAllObjects];
+    self.chatMessages = nil;
 }
 
-- (BOOL)isEqual:(id)other
-{
+- (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
     } else if (!other || ![other isKindOfClass:[self class]]) {

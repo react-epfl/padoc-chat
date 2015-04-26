@@ -32,6 +32,8 @@
 		AADF73FF1AED41BB0021052C /* MHUnicastSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF73F01AED41BB0021052C /* MHUnicastSocket.m */; };
 		AADF74021AED42350021052C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF74011AED42350021052C /* Message.m */; };
 		AADF74051AED42440021052C /* Peer.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF74041AED42440021052C /* Peer.m */; };
+		AADF74081AED64B10021052C /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF74071AED64B10021052C /* ChatMessage.m */; };
+		AADF740A1AED64CB0021052C /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF74091AED64CB0021052C /* ChatMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		AADF74011AED42350021052C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		AADF74031AED423D0021052C /* Peer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Peer.h; sourceTree = "<group>"; };
 		AADF74041AED42440021052C /* Peer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peer.m; sourceTree = "<group>"; };
+		AADF74061AED63CD0021052C /* ChatMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		AADF74071AED64B10021052C /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		AADF74091AED64CB0021052C /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,7 @@
 		AADF739D1AED41820021052C = {
 			isa = PBXGroup;
 			children = (
+				AADF74071AED64B10021052C /* ChatMessage.m */,
 				AADF73D21AED41BB0021052C /* Multihop */,
 				AADF73A81AED41820021052C /* MultihopChat */,
 				AADF73C51AED41820021052C /* MultihopChatTests */,
@@ -150,6 +156,8 @@
 				AADF74011AED42350021052C /* Message.m */,
 				AADF74031AED423D0021052C /* Peer.h */,
 				AADF74041AED42440021052C /* Peer.m */,
+				AADF74061AED63CD0021052C /* ChatMessage.h */,
+				AADF74091AED64CB0021052C /* ChatMessage.m */,
 			);
 			path = MultihopChat;
 			sourceTree = "<group>";
@@ -325,10 +333,12 @@
 				AADF73B21AED41820021052C /* MasterViewController.m in Sources */,
 				AADF73FF1AED41BB0021052C /* MHUnicastSocket.m in Sources */,
 				AADF73F11AED41BB0021052C /* MH6ShotsProtocol.m in Sources */,
+				AADF74081AED64B10021052C /* ChatMessage.m in Sources */,
 				AADF73FB1AED41BB0021052C /* MHMultipeerWrapper.m in Sources */,
 				AADF73AC1AED41820021052C /* main.m in Sources */,
 				AADF73F71AED41BB0021052C /* MHIdGenerator.m in Sources */,
 				AADF73F21AED41BB0021052C /* MH6ShotsSchedule.m in Sources */,
+				AADF740A1AED64CB0021052C /* ChatMessage.m in Sources */,
 				AADF73F81AED41BB0021052C /* MHLocationManager.m in Sources */,
 				AADF73F51AED41BB0021052C /* MHConnectionsHandler.m in Sources */,
 				AADF73F41AED41BB0021052C /* MHConnectionBuffer.m in Sources */,
@@ -531,6 +541,7 @@
 				AADF73CE1AED41830021052C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AADF73CF1AED41830021052C /* Build configuration list for PBXNativeTarget "MultihopChatTests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +550,7 @@
 				AADF73D11AED41830021052C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

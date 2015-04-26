@@ -32,7 +32,17 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.title = [self.detailItem displayName];
+        self.title = [@"Chat with " stringByAppendingString:[self.detailItem displayName]];
+        
+        // Add all messages to the TextView
+        for (int i = 0; i < [[self.detailItem chatMessages] count]; ++i) {
+            ChatMessage *message = [[self.detailItem chatMessages] objectAtIndex:i];
+            self.textView.text = [self.textView.text stringByAppendingString:message.source];
+            self.textView.text = [self.textView.text stringByAppendingString:@" ("];
+            // TODO : Add date
+            self.textView.text = [self.textView.text stringByAppendingString:@") : "];
+            self.textView.text = [self.textView.text stringByAppendingString:message.content];
+        }
     }
 }
 
@@ -54,6 +64,7 @@
 }
 
 - (IBAction)send:(id)sender {
+    // Send a message containing the entered text
     Message* msg = [[Message alloc] initWithType:@"chat-text"
                                      withContent:self.textField.text];
     
@@ -65,6 +76,14 @@
     
     [self.socket sendPacket:packet error:&error];
     
+    // Add the message to the TextView
+    self.textView.text = [self.textView.text stringByAppendingString:[UIDevice currentDevice].name];
+    self.textView.text = [self.textView.text stringByAppendingString:@" ("];
+    // TODO : Add date
+    self.textView.text = [self.textView.text stringByAppendingString:@") : "];
+    self.textView.text = [self.textView.text stringByAppendingString:self.textField.text];
+    
+    // Erase the content of the TextField
     self.textField.text = nil;
 }
 

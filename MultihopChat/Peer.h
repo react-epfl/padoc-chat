@@ -10,14 +10,19 @@
 #define MultihopChat_Peer_h
 #import <Foundation/Foundation.h>
 
-@interface Peer : NSObject<NSCoding>
+#import "ChatMessage.h"
+
+@interface Peer : NSObject
 
 @property (nonatomic, readonly, strong) NSString *peerId;
 @property (nonatomic, readonly, strong) NSString *displayName;
+@property (nonatomic, readonly, strong) NSMutableArray *chatMessages;
 
 
 - (instancetype)initWithPeerId:(NSString *)peerId
                withDisplayName:(NSString *)displayName;
+
+-(void) addMessage:(ChatMessage *)message;
 
 
 @end
