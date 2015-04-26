@@ -174,7 +174,7 @@
         
         // Retrieve the peer that sent the message
         
-        [self.detailViewController addMessage:(NSString *)msg.content];
+//        [self.detailViewController addMessage:(NSString *)msg.content];
         
         Peer *peer = nil;
         for (int i = 0; i < self.objects.count; ++i) {
@@ -185,14 +185,13 @@
         
         if (peer != nil) {
             
-            ChatMessage *message = [[ChatMessage alloc] initWithSource:packet.source
-                                                              withDate:[NSDate date]
-                                                           withContent:(NSString *)msg.content];
+            ChatMessage *message = (ChatMessage *)msg.content;
             
             [peer addMessage:message];
             
             if ([self.detailViewController.detailItem isEqual:peer]) {
                 // Refresh the detail view
+                [self.detailViewController printMessage:message];
             }
         }
         

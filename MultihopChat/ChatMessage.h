@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ChatMessage : NSObject
+@interface ChatMessage : NSObject<NSCoding>
 
 @property (nonatomic, readonly, strong) NSString *source;
 @property (nonatomic, readonly, strong) NSDate *date;

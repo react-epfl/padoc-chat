@@ -32,6 +32,21 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.source = [decoder decodeObjectForKey:@"source"];
+        self.date = [decoder decodeObjectForKey:@"date"];
+        self.content = [decoder decodeObjectForKey:@"content"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.source forKey:@"source"];
+    [encoder encodeObject:self.date forKey:@"date"];
+    [encoder encodeObject:self.content forKey:@"content"];
+}
+
 - (void)dealloc {
     self.source = nil;
     self.date = nil;

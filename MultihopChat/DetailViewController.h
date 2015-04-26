@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "MHMulticastSocket.h"
+#import "ChatMessage.h"
 
 
 @interface DetailViewController : UIViewController
@@ -21,7 +22,7 @@
 
 @property (strong, nonatomic) MHMulticastSocket *socket;
 
-- (void)addMessage:(NSString *)message;
+- (void)printMessage:(ChatMessage *)message;
 
 @end
 
