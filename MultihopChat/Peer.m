@@ -19,7 +19,7 @@
 @implementation Peer
 
 - (instancetype)initWithPeerId:(NSString *)peerId
-                 withDisplayName:(NSString *)displayName
+               withDisplayName:(NSString *)displayName
 {
     self = [super init];
     if (self)

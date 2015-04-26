@@ -5,31 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5D5E24EA-0767-49DD-B486-C67D5F5FC7A4</string>
-	<key>IDESourceControlProjectName</key>
-	<string>MultihopChat</string>
+	<string>77B568CD-F9A1-4933-987F-D7AF98F6415F</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BF3603D533D58E8C85C0D296A0AB8E265FDDDCF5</key>
 		<string>https://github.com/QJonny/multihop-lib-ios</string>
-		<key>E9838038A5903D4DEF8431CD12BB7DBE18FACCB1</key>
-		<string>https://github.com/Svreber/MultihopChat</string>
 	</dict>
-	<key>IDESourceControlProjectPath</key>
-	<string>MultihopChat.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BF3603D533D58E8C85C0D296A0AB8E265FDDDCF5</key>
-		<string>../../../multihop-lib-ios</string>
-		<key>E9838038A5903D4DEF8431CD12BB7DBE18FACCB1</key>
-		<string>../..</string>
+		<string>multihop-lib-ios/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Svreber/MultihopChat</string>
+	<string>https://github.com/QJonny/multihop-lib-ios</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E9838038A5903D4DEF8431CD12BB7DBE18FACCB1</string>
+	<string>BF3603D533D58E8C85C0D296A0AB8E265FDDDCF5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -39,14 +31,6 @@
 			<string>BF3603D533D58E8C85C0D296A0AB8E265FDDDCF5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>multihop-lib-ios</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E9838038A5903D4DEF8431CD12BB7DBE18FACCB1</string>
-			<key>IDESourceControlWCCName</key>
-			<string>xxx</string>
 		</dict>
 	</array>
 </dict>

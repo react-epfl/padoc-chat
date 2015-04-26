@@ -2,7 +2,7 @@
 //  DetailViewController.m
 //  MultihopChat
 //
-//  Created by Sven Reber on 24/04/15.
+//  Created by Sven Reber on 26/04/15.
 //  Copyright (c) 2015 Sven Reber. All rights reserved.
 //
 
@@ -28,7 +28,7 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+        self.title = [self.detailItem displayName];
     }
 }
 
@@ -44,7 +44,6 @@
 }
 
 - (IBAction)send:(id)sender {
-    self.textView.text = [self.textView.text stringByAppendingString:[self.textField.text stringByAppendingString:@"\n"]];
 }
 
 @end
