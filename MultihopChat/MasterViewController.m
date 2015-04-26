@@ -189,10 +189,12 @@
             
             [peer addMessage:message];
             
-            if ([self.detailViewController.detailItem isEqual:peer]) {
+//            if ([self.detailViewController.detailItem isEqual:peer]) {
                 // Refresh the detail view
-                [self.detailViewController printMessage:message];
-            }
+//            [self.detailViewController printMessage:message];
+//            [self.detailViewController setDetailItem:peer];
+//            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Midhun" object:nil];
         }
         
     }

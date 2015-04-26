@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "MHMulticastSocket.h"
+#import "Peer.h"
 #import "ChatMessage.h"
 
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) Peer *detailItem;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;

@@ -22,14 +22,20 @@
 #pragma mark - Managing the detail item
 
 - (void)printMessage:(ChatMessage *)message {
+    self.textView.text = [self.textView.text stringByAppendingString:@"\n"];
+    
     self.textView.text = [self.textView.text stringByAppendingString:message.source];
+    
     self.textView.text = [self.textView.text stringByAppendingString:@" ("];
-    // TODO : Add date
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
+    self.textView.text = [self.textView.text stringByAppendingString:[dateFormatter stringFromDate:message.date]];
     self.textView.text = [self.textView.text stringByAppendingString:@") : "];
+    
     self.textView.text = [self.textView.text stringByAppendingString:message.content];
 }
 
-- (void)setDetailItem:(id)newDetailItem {
+- (void)setDetailItem:(Peer *)newDetailItem {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
             
@@ -43,6 +49,7 @@
     if (self.detailItem) {
         self.title = [@"Chat with " stringByAppendingString:[self.detailItem displayName]];
         
+        self.textView.text = @"";
         // Add all messages to the TextView
         for (int i = 0; i < [[self.detailItem chatMessages] count]; ++i) {
             ChatMessage *message = [[self.detailItem chatMessages] objectAtIndex:i];
@@ -53,7 +60,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performTask:) name:@"Midhun" object:nil];
+    
     // Do any additional setup after loading the view, typically from a nib.
+    [self configureView];
+}
+
+- (void)performTask:(id)sender {
     [self configureView];
 }
 
@@ -95,6 +109,9 @@
     NSError *error;
     
     [self.socket sendPacket:packet error:&error];
+    
+    // Add the message to the current peer
+    [self.detailItem addMessage:chatMsg];
     
     // Add the message to the TextView
     [self printMessage:chatMsg];
