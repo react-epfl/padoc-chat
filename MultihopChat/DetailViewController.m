@@ -43,4 +43,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)send:(id)sender {
+    self.textView.text = [self.textView.text stringByAppendingString:[self.textField.text stringByAppendingString:@"\n"]];
+}
+
 @end
