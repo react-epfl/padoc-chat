@@ -62,7 +62,7 @@
     [self.objects removeAllObjects];
     
     Message* msg = [[Message alloc] initWithType:@"discovery"
-                                     withContent:nil];
+                                     withContent:[UIDevice currentDevice].name];
     
     MHPacket* packet = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
                                        withDestinations:[[NSArray alloc] initWithObjects:GLOBAL, nil]
@@ -134,6 +134,8 @@
     
     if ([msg.type isEqualToString:@"discovery"]) {
         
+        // Reply to the discovery request
+        
         Message* sentMsg = [[Message alloc] initWithType:@"discovery-reply"
                                              withContent:[UIDevice currentDevice].name];
         
@@ -144,6 +146,17 @@
         NSError *error;
         
         [self.socket sendPacket:sentPacket error:&error];
+        
+        // Add the peer that initiated the discovery to the list of peers if not already present
+        
+        NSString* displayName = (NSString*)msg.content;
+        
+        Peer *peer = [[Peer alloc] initWithPeerId:packet.source withDisplayName:displayName];
+        
+        if (![self.objects containsObject:peer]) {
+            [self.objects addObject:peer];
+            [self.tableView reloadData];
+        }
         
     } else if ([msg.type isEqualToString:@"discovery-reply"]) {
         
