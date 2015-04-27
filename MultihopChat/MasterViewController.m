@@ -46,8 +46,6 @@
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(discoverPeers:)];
     self.navigationItem.rightBarButtonItem = refreshButton;
     
-    self.navigationItem.backBarButtonItem.title = @"Peers";
-    
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     // Set up the socket and the groups

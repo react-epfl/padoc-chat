@@ -35,7 +35,11 @@
     // Date
     [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" ("]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
+    if ([[NSCalendar currentCalendar] isDateInToday:message.date]) {
+        [dateFormatter setDateFormat:@"HH:mm:ss"];
+    } else {
+        [dateFormatter setDateFormat:@"dd.MM.YYYY HH:mm:ss"];
+    }
     NSString *dateString = [dateFormatter stringFromDate:message.date];
     [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:dateString]];
     [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@") : "]];
