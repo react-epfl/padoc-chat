@@ -22,17 +22,34 @@
 #pragma mark - Managing the detail item
 
 - (void)printMessage:(ChatMessage *)message {
-    self.textView.text = [self.textView.text stringByAppendingString:@"\n"];
     
-    self.textView.text = [self.textView.text stringByAppendingString:message.source];
+    NSMutableAttributedString *messageString = [[NSMutableAttributedString alloc] initWithAttributedString:[self.textView attributedText]];
     
-    self.textView.text = [self.textView.text stringByAppendingString:@" ("];
+    [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
+    
+    // Source
+    NSMutableAttributedString *sourceString = [[NSMutableAttributedString alloc] initWithString:message.source
+                                                                                     attributes:[NSDictionary dictionaryWithObject:[UIFont boldSystemFontOfSize:12] forKey:NSFontAttributeName]];
+    [messageString appendAttributedString:sourceString];
+    
+    // Date
+    [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" ("]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
-    self.textView.text = [self.textView.text stringByAppendingString:[dateFormatter stringFromDate:message.date]];
-    self.textView.text = [self.textView.text stringByAppendingString:@") : "];
+    NSString *dateString = [dateFormatter stringFromDate:message.date];
+    [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:dateString]];
+    [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@") : "]];
     
-    self.textView.text = [self.textView.text stringByAppendingString:message.content];
+    // Message
+    NSMutableAttributedString *contentString = [[NSMutableAttributedString alloc] initWithString:message.content
+                                                                                      attributes:[NSDictionary dictionaryWithObject:[UIFont boldSystemFontOfSize:12] forKey:NSFontAttributeName]];
+    if ([message.source isEqualToString:[UIDevice currentDevice].name]) {
+        [contentString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, message.content.length)];
+    }
+    [messageString appendAttributedString:contentString];
+    
+    // Append the formatted string
+    [self.textView setAttributedText:messageString];
 }
 
 - (void)setDetailItem:(Peer *)newDetailItem {
@@ -55,13 +72,19 @@
             ChatMessage *message = [[self.detailItem chatMessages] objectAtIndex:i];
             [self printMessage:message];
         }
+    } else {
+        [self.sendButton setEnabled:NO];
+        [self.textField setEnabled:NO];
+        self.textView.text = @"Please select a peer you want to chat with.";
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performTask:) name:@"Midhun" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performTask:) name:@"DetailNotif" object:nil];
+    
+    [self.textView setSelectable:NO];
     
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];

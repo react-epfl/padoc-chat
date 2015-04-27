@@ -46,6 +46,8 @@
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(discoverPeers:)];
     self.navigationItem.rightBarButtonItem = refreshButton;
     
+    self.navigationItem.backBarButtonItem.title = @"Peers";
+    
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     // Set up the socket and the groups
@@ -155,14 +157,15 @@
         
         // Add the peer that initiated the discovery to the list of peers if not already present
         
-        NSString* displayName = (NSString*)msg.content;
+        NSString *peerId = packet.source;
+        NSString *displayName = (NSString*)msg.content;
         
-        Peer *peer = [[Peer alloc] initWithPeerId:packet.source withDisplayName:displayName];
+        Peer *peer = [[Peer alloc] initWithPeerId:peerId withDisplayName:displayName];
         
         if (![self.objects containsObject:peer]) {
             [self.objects addObject:peer];
             
-            NSMutableArray *peerMessages = [self.peersMessages objectForKey:packet.source];
+            NSMutableArray *peerMessages = [self.peersMessages objectForKey:peerId];
             if (peerMessages) {
                 [peer setChatMessages:peerMessages];
             } else {
@@ -174,14 +177,15 @@
         
     } else if ([msg.type isEqualToString:@"discovery-reply"]) {
         
-        NSString* displayName = (NSString*)msg.content;
+        NSString *peerId = packet.source;
+        NSString *displayName = (NSString*)msg.content;
         
-        Peer *peer = [[Peer alloc] initWithPeerId:packet.source withDisplayName:displayName];
+        Peer *peer = [[Peer alloc] initWithPeerId:peerId withDisplayName:displayName];
         
         if (![self.objects containsObject:peer]) {
             [self.objects addObject:peer];
             
-            NSMutableArray *peerMessages = [self.peersMessages objectForKey:packet.source];
+            NSMutableArray *peerMessages = [self.peersMessages objectForKey:peerId];
             if (peerMessages) {
                 [peer setChatMessages:peerMessages];
             } else {
@@ -193,21 +197,10 @@
         
     } else if ([msg.type isEqualToString:@"chat-text"]) {
         
-        // Retrieve the peer that sent the message
-        Peer *peer = nil;
-        for (int i = 0; i < self.objects.count; ++i) {
-            if ([[self.objects[i] peerId] isEqualToString:packet.source]) {
-                peer = self.objects[i];
-            }
-        }
-        
-        if (peer != nil) {
-            
-            ChatMessage *message = (ChatMessage *)msg.content;
-            
-            [peer addMessage:message];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"Midhun" object:nil];
+        NSMutableArray *peerMessages = [self.peersMessages objectForKey:packet.source];
+        if (peerMessages) {
+            [peerMessages addObject:(ChatMessage *)msg.content];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DetailNotif" object:nil];
         }
         
     }
