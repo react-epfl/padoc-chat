@@ -18,6 +18,8 @@
 @property (nonatomic, readonly, strong) NSString *displayName;
 @property (nonatomic, readonly, strong) NSMutableArray *chatMessages;
 
+@property (nonatomic, readwrite) int unreadMessages;
+
 
 - (instancetype)initWithPeerId:(NSString *)peerId
                withDisplayName:(NSString *)displayName;

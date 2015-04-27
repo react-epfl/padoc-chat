@@ -76,6 +76,9 @@
             ChatMessage *message = [[self.detailItem chatMessages] objectAtIndex:i];
             [self printMessage:message];
         }
+        
+        [self.detailItem setUnreadMessages:0];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MasterNotif" object:nil];
     } else {
         [self.sendButton setEnabled:NO];
         [self.textField setEnabled:NO];
@@ -103,25 +106,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (void)addMessage:(NSString *)message {
-////    self.textView.text = message;
-//    [self.textView setText:message];
-//    self.textField.text = message;
-//}
-
 - (IBAction)send:(id)sender {
-    // Send a message containing the entered text
-//    Message* msg = [[Message alloc] initWithType:@"chat-text"
-//                                     withContent:self.textField.text];
-//    
-//    MHPacket* packet = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
-//                                       withDestinations:[[NSArray alloc] initWithObjects:[self.detailItem peerId], nil]
-//                                               withData:[NSKeyedArchiver archivedDataWithRootObject:msg]];
-//    
-//    NSError *error;
-//    
-//    [self.socket sendPacket:packet error:&error];
-    
     // Create a ChatMessage with the entered text and the peer infos
     ChatMessage *chatMsg = [[ChatMessage alloc] initWithSource:[UIDevice currentDevice].name
                                                       withDate:[NSDate date]

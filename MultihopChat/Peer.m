@@ -26,6 +26,7 @@
         self.peerId = peerId;
         self.displayName = displayName;
         self.chatMessages = [NSMutableArray array];
+        self.unreadMessages = 0;
     }
     return self;
 }

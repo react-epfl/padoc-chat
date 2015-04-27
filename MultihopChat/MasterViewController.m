@@ -62,6 +62,12 @@
     
     // Initialize the dictionary of messages
     self.peersMessages = [NSMutableDictionary dictionary];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView:) name:@"MasterNotif" object:nil];
+}
+
+- (void)reloadTableView:(id)sender {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,8 +118,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    Peer *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object displayName];
+    Peer *peer = self.objects[indexPath.row];
+    if ([peer unreadMessages] > 0) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", [peer displayName], [peer unreadMessages]];
+    } else {
+        cell.textLabel.text = [peer displayName];
+    }
     return cell;
 }
 
@@ -205,6 +215,19 @@
         if (peerMessages) {
             [peerMessages addObject:(ChatMessage *)msg.content];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DetailNotif" object:nil];
+            
+            // Set the peer unread state to true
+            Peer *peer = nil;
+            for (int i = 0; i < self.objects.count; ++i) {
+                Peer *peerI = [self.objects objectAtIndex:i];
+                if ([[peerI peerId] isEqualToString:packet.source]) {
+                    peer = peerI;
+                }
+            }
+            if (peer) {
+                peer.unreadMessages += 1;
+                [self.tableView reloadData];
+            }
         }
         
     }
