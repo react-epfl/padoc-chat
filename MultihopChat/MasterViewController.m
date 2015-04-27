@@ -51,6 +51,12 @@
     // Set up the socket and the groups
     self.socket = [[MHMulticastSocket alloc] initWithServiceType:@"chat"];
     self.socket.delegate = self;
+    
+    // For background mode
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate setSocket:self.socket];
+    
+    // Join the groups
     [self.socket joinGroup:GLOBAL];
     [self.socket joinGroup:[self.socket getOwnPeer]];
     
