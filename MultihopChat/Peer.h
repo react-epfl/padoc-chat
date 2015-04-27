@@ -22,7 +22,8 @@
 - (instancetype)initWithPeerId:(NSString *)peerId
                withDisplayName:(NSString *)displayName;
 
--(void) addMessage:(ChatMessage *)message;
+- (void) setChatMessages:(NSMutableArray *)chatMessages;
+- (void) addMessage:(ChatMessage *)message;
 
 
 @end

@@ -37,8 +37,6 @@
 - (void)dealloc {
     self.peerId = nil;
     self.displayName = nil;
-    
-    [self.chatMessages removeAllObjects];
     self.chatMessages = nil;
 }
 

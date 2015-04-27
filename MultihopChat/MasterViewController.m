@@ -19,6 +19,7 @@
 @interface MasterViewController () <MHMulticastSocketDelegate>
 
 @property NSMutableArray *objects;
+@property NSMutableDictionary *peersMessages;
 @property (strong, nonatomic) MHMulticastSocket *socket;
 
 @end
@@ -52,6 +53,9 @@
     self.socket.delegate = self;
     [self.socket joinGroup:GLOBAL];
     [self.socket joinGroup:[self.socket getOwnPeer]];
+    
+    // Initialize the dictionary of messages
+    self.peersMessages = [NSMutableDictionary dictionary];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,6 +65,7 @@
 
 - (void)discoverPeers:(id)sender {
     [self.objects removeAllObjects];
+    [self.tableView reloadData];
     
     Message* msg = [[Message alloc] initWithType:@"discovery"
                                      withContent:[UIDevice currentDevice].name];
@@ -156,6 +161,14 @@
         
         if (![self.objects containsObject:peer]) {
             [self.objects addObject:peer];
+            
+            NSMutableArray *peerMessages = [self.peersMessages objectForKey:packet.source];
+            if (peerMessages) {
+                [peer setChatMessages:peerMessages];
+            } else {
+                [self.peersMessages setValue:peer.chatMessages forKey:peer.peerId];
+            }
+            
             [self.tableView reloadData];
         }
         
@@ -167,15 +180,20 @@
         
         if (![self.objects containsObject:peer]) {
             [self.objects addObject:peer];
+            
+            NSMutableArray *peerMessages = [self.peersMessages objectForKey:packet.source];
+            if (peerMessages) {
+                [peer setChatMessages:peerMessages];
+            } else {
+                [self.peersMessages setValue:peer.chatMessages forKey:peer.peerId];
+            }
+            
             [self.tableView reloadData];
         }
         
     } else if ([msg.type isEqualToString:@"chat-text"]) {
         
         // Retrieve the peer that sent the message
-        
-//        [self.detailViewController addMessage:(NSString *)msg.content];
-        
         Peer *peer = nil;
         for (int i = 0; i < self.objects.count; ++i) {
             if ([[self.objects[i] peerId] isEqualToString:packet.source]) {
@@ -189,11 +207,6 @@
             
             [peer addMessage:message];
             
-//            if ([self.detailViewController.detailItem isEqual:peer]) {
-                // Refresh the detail view
-//            [self.detailViewController printMessage:message];
-//            [self.detailViewController setDetailItem:peer];
-//            }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Midhun" object:nil];
         }
         
