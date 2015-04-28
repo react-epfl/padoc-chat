@@ -52,8 +52,13 @@
     }
     [messageString appendAttributedString:contentString];
     
+//    CGPoint offset = [self.textView contentOffset];
     // Append the formatted string
     [self.textView setAttributedText:messageString];
+    
+    // Scroll to the bottom of the TextView
+//    [self.textView setContentOffset:offset animated:NO];
+    [self.textView scrollRangeToVisible:NSMakeRange([self.textView.attributedText length] - 1, 1)];
 }
 
 - (void)setDetailItem:(Peer *)newDetailItem {
