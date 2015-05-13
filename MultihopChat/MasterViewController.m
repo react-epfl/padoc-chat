@@ -82,13 +82,11 @@
     Message* msg = [[Message alloc] initWithType:@"discovery"
                                      withContent:[UIDevice currentDevice].name];
     
-    MHPacket* packet = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
-                                       withDestinations:[[NSArray alloc] initWithObjects:GLOBAL, nil]
-                                               withData:[NSKeyedArchiver archivedDataWithRootObject:msg]];
-    
     NSError *error;
     
-    [self.socket sendPacket:packet error:&error];
+    [self.socket sendMessage:[NSKeyedArchiver archivedDataWithRootObject:msg]
+              toDestinations:[[NSArray alloc] initWithObjects:GLOBAL, nil]
+                       error:&error];
 }
 
 #pragma mark - Segues
@@ -161,13 +159,11 @@
         Message* sentMsg = [[Message alloc] initWithType:@"discovery-reply"
                                              withContent:[UIDevice currentDevice].name];
         
-        MHPacket* sentPacket = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
-                                               withDestinations:[[NSArray alloc] initWithObjects:packet.source, nil]
-                                                       withData:[NSKeyedArchiver archivedDataWithRootObject:sentMsg]];
-        
         NSError *error;
         
-        [self.socket sendPacket:sentPacket error:&error];
+        [self.socket sendMessage:[NSKeyedArchiver archivedDataWithRootObject:sentMsg]
+                  toDestinations:[[NSArray alloc] initWithObjects:packet.source, nil]
+                           error:&error];
         
         // Add the peer that initiated the discovery to the list of peers if not already present
         

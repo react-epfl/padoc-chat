@@ -157,12 +157,11 @@
     Message* msg = [[Message alloc] initWithType:@"chat-text"
                                      withContent:chatMsg];
     
-    MHPacket* packet = [[MHPacket alloc] initWithSource:[self.socket getOwnPeer]
-                                       withDestinations:[[NSArray alloc] initWithObjects:[self.detailItem peerId], nil]
-                                               withData:[NSKeyedArchiver archivedDataWithRootObject:msg]];
     NSError *error;
     
-    [self.socket sendPacket:packet error:&error];
+    [self.socket sendMessage:[NSKeyedArchiver archivedDataWithRootObject:msg]
+              toDestinations:[[NSArray alloc] initWithObjects:[self.detailItem peerId], nil]
+                       error:&error];
     
     // Add the message to the current peer
     [self.detailItem addMessage:chatMsg];
