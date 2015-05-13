@@ -141,7 +141,7 @@
 
 #pragma mark - Methods of MHMultiCast
 
-- (void)mhMulticastSocket:(MHMulticastSocket *)mhMulticastSocket
+- (void)mhSocket:(MHSocket *)mhSocket
           failedToConnect:(NSError *)error {
     
 }
