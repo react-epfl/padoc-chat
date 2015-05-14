@@ -147,10 +147,12 @@
 }
 
 
-- (void)mhMulticastSocket:(MHMulticastSocket *)mhMulticastSocket
-         didReceivePacket:(MHPacket *)packet {
+- (void)mhSocket:(MHSocket *)mhSocket
+didReceiveMessage:(NSData *)data
+        fromPeer:(NSString *)peer
+   withTraceInfo:(NSArray *)traceInfo {
     
-    Message* msg = [NSKeyedUnarchiver unarchiveObjectWithData:packet.data];
+    Message* msg = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     if ([msg.type isEqualToString:@"discovery"]) {
         
@@ -162,24 +164,23 @@
         NSError *error;
         
         [self.socket sendMessage:[NSKeyedArchiver archivedDataWithRootObject:sentMsg]
-                  toDestinations:[[NSArray alloc] initWithObjects:packet.source, nil]
+                  toDestinations:[[NSArray alloc] initWithObjects:peer, nil]
                            error:&error];
         
         // Add the peer that initiated the discovery to the list of peers if not already present
         
-        NSString *peerId = packet.source;
         NSString *displayName = (NSString*)msg.content;
         
-        Peer *peer = [[Peer alloc] initWithPeerId:peerId withDisplayName:displayName];
+        Peer *peerObject = [[Peer alloc] initWithPeerId:peer withDisplayName:displayName];
         
-        if (![self.objects containsObject:peer]) {
-            [self.objects addObject:peer];
+        if (![self.objects containsObject:peerObject]) {
+            [self.objects addObject:peerObject];
             
-            NSMutableArray *peerMessages = [self.peersMessages objectForKey:peerId];
+            NSMutableArray *peerMessages = [self.peersMessages objectForKey:peer];
             if (peerMessages) {
-                [peer setChatMessages:peerMessages];
+                [peerObject setChatMessages:peerMessages];
             } else {
-                [self.peersMessages setValue:peer.chatMessages forKey:peer.peerId];
+                [self.peersMessages setValue:peerObject.chatMessages forKey:peerObject.peerId];
             }
             
             [self.tableView reloadData];
@@ -187,19 +188,18 @@
         
     } else if ([msg.type isEqualToString:@"discovery-reply"]) {
         
-        NSString *peerId = packet.source;
         NSString *displayName = (NSString*)msg.content;
         
-        Peer *peer = [[Peer alloc] initWithPeerId:peerId withDisplayName:displayName];
+        Peer *peerObject = [[Peer alloc] initWithPeerId:peer withDisplayName:displayName];
         
-        if (![self.objects containsObject:peer]) {
-            [self.objects addObject:peer];
+        if (![self.objects containsObject:peerObject]) {
+            [self.objects addObject:peerObject];
             
-            NSMutableArray *peerMessages = [self.peersMessages objectForKey:peerId];
+            NSMutableArray *peerMessages = [self.peersMessages objectForKey:peer];
             if (peerMessages) {
-                [peer setChatMessages:peerMessages];
+                [peerObject setChatMessages:peerMessages];
             } else {
-                [self.peersMessages setValue:peer.chatMessages forKey:peer.peerId];
+                [self.peersMessages setValue:peerObject.chatMessages forKey:peerObject.peerId];
             }
             
             [self.tableView reloadData];
@@ -207,21 +207,21 @@
         
     } else if ([msg.type isEqualToString:@"chat-text"]) {
         
-        NSMutableArray *peerMessages = [self.peersMessages objectForKey:packet.source];
+        NSMutableArray *peerMessages = [self.peersMessages objectForKey:peer];
         if (peerMessages) {
             [peerMessages addObject:(ChatMessage *)msg.content];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DetailNotif" object:nil];
             
             // Set the peer unread state to true
-            Peer *peer = nil;
+            Peer *peerObject = nil;
             for (int i = 0; i < self.objects.count; ++i) {
                 Peer *peerI = [self.objects objectAtIndex:i];
-                if ([[peerI peerId] isEqualToString:packet.source]) {
-                    peer = peerI;
+                if ([[peerI peerId] isEqualToString:peer]) {
+                    peerObject = peerI;
                 }
             }
-            if (peer) {
-                peer.unreadMessages += 1;
+            if (peerObject) {
+                peerObject.unreadMessages += 1;
                 [self.tableView reloadData];
             }
         }
