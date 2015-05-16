@@ -20,6 +20,7 @@
 
 @property NSMutableArray *objects;
 @property NSMutableDictionary *peersMessages;
+@property NSMutableArray *globalMessages;
 @property (strong, nonatomic) MHMulticastSocket *socket;
 
 @end
@@ -62,6 +63,11 @@
     
     // Initialize the dictionary of messages
     self.peersMessages = [NSMutableDictionary dictionary];
+    // Initialize the array of global messages
+    self.globalMessages = [NSMutableArray array];
+    
+    // Add the global chat room
+    [self.objects addObject:[[Peer alloc] initWithPeerId:GLOBAL withDisplayName:@"Global room"]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView:) name:@"MasterNotif" object:nil];
 }
@@ -76,7 +82,10 @@
 }
 
 - (void)discoverPeers:(id)sender {
-    [self.objects removeAllObjects];
+    // Remove all objects but the first one (global)
+    while ([self.objects count] > 1) {
+        [self.objects removeLastObject];
+    }
     [self.tableView reloadData];
     
     Message* msg = [[Message alloc] initWithType:@"discovery"
@@ -224,6 +233,18 @@ didReceiveMessage:(NSData *)data
                 peerObject.unreadMessages += 1;
                 [self.tableView reloadData];
             }
+        }
+        
+    } else if ([msg.type isEqualToString:@"global-text"]) {
+        
+        [self.globalMessages addObject:(ChatMessage *)msg.content];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DetailNotif" object:nil];
+        
+        // Set the peer unread state to true
+        Peer *globalPeer = [self.objects objectAtIndex:0];
+        if (globalPeer) {
+            globalPeer.unreadMessages += 1;
+            [self.tableView reloadData];
         }
         
     }
