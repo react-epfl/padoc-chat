@@ -72,7 +72,11 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.title = [@"Chat with " stringByAppendingString:[self.detailItem displayName]];
+        if ([[self.detailItem peerId] isEqualToString:@"global"]) {
+            self.title = @"Global chat room";
+        } else {
+            self.title = [@"Chat with " stringByAppendingString:[self.detailItem displayName]];
+        }
         
         self.textView.text = @"";
         // Add all messages to the TextView
