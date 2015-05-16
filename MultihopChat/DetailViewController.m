@@ -149,13 +149,23 @@
 }
 
 - (IBAction)send:(id)sender {
+    
     // Create a ChatMessage with the entered text and the peer infos
     ChatMessage *chatMsg = [[ChatMessage alloc] initWithSource:[UIDevice currentDevice].name
                                                       withDate:[NSDate date]
                                                    withContent:self.textField.text];
+    
     // Send this ChatMessage to the destinated peer
-    Message* msg = [[Message alloc] initWithType:@"chat-text"
-                                     withContent:chatMsg];
+    Message* msg = nil;
+    if ([[self.detailItem peerId] isEqualToString:@"global"]) {
+        // GLOBAL chat room
+        msg = [[Message alloc] initWithType:@"global-text"
+                                         withContent:chatMsg];
+    } else {
+        // 1-to-1 chat
+        msg = [[Message alloc] initWithType:@"chat-text"
+                                         withContent:chatMsg];
+    }
     
     NSError *error;
     
