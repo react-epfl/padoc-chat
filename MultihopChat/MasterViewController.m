@@ -127,7 +127,7 @@
     int hopsCount = [self.socket hopsCountFromPeer:peer.peerId];
     NSString *hopsCountText = hopsCount == 1 ? @"hop" : @"hops";
     NSString *hopsText = @"";
-    if ([peer.peerId isEqualToString:GLOBAL]) {
+    if (![peer.peerId isEqualToString:GLOBAL]) {
         hopsText =  [NSString stringWithFormat:@" [%d %@]", hopsCount, hopsCountText];
     }
     
