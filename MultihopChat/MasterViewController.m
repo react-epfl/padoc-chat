@@ -123,11 +123,19 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     Peer *peer = self.objects[indexPath.row];
-    if ([peer unreadMessages] > 0) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", [peer displayName], [peer unreadMessages]];
-    } else {
-        cell.textLabel.text = [peer displayName];
+    
+    int hopsCount = [self.socket hopsCountFromPeer:peer.peerId];
+    NSString *hopsCountText = hopsCount == 1 ? @"hop" : @"hops";
+    NSString *hopsText = @"";
+    if ([peer.peerId isEqualToString:GLOBAL]) {
+        hopsText =  [NSString stringWithFormat:@" [%d %@]", hopsCount, hopsCountText];
     }
+    
+    int unreadMessages = [peer unreadMessages];
+    NSString *unreadText = unreadMessages > 0 ? [NSString stringWithFormat:@" (%d unread)", unreadMessages] : @"";
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@%@%@", [peer displayName], hopsText, unreadText];
+    
     return cell;
 }
 
