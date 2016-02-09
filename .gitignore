@@ -1,3 +1,5 @@
 *.DS_Store
-
-MultihopChat.xcodeproj/project.xcworkspace
+MultihopChat.xcodeproj/xcuserdata/*
+MultihopChat.xcodeproj/project.xcworkspace/xcuserdata*
+*.xcuserstate
+*.xcscmblueprint

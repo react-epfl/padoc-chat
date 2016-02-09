@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MHMulticastSocket.h"
+#import "MHPadoc.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void)setSocket:(MHMulticastSocket *)socket;
+- (void)setPadoc:(MHPadoc *)padoc;
 
 @end
 

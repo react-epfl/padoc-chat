@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MHMulticastSocket.h"
+#import "MHPadoc.h"
 #import "Peer.h"
 #import "ChatMessage.h"
 
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
-@property (strong, nonatomic) MHMulticastSocket *socket;
+@property (strong, nonatomic) MHPadoc *padoc;
 
 - (void)printMessage:(ChatMessage *)message;
 
