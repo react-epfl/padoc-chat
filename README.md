@@ -1,2 +1,2 @@
-# MultihopChat
-A chat application on iOS that uses the multihop library.
+# PadocChat
+A chat application on iOS that uses the padoc library.
