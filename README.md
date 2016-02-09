@@ -1,2 +1,2 @@
 # PadocChat
-A chat application on iOS that uses the padoc library.
+A chat application on iOS that uses the Padoc library.
