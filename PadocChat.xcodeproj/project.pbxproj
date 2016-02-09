@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA092DC61B037D8600C313EE /* MH6ShotsProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092D9B1B037D8600C313EE /* MH6ShotsProtocol.m */; };
+		AA092DC71B037D8600C313EE /* MH6ShotsSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092D9D1B037D8600C313EE /* MH6ShotsSchedule.m */; };
+		AA092DC81B037D8600C313EE /* MH6ShotsScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092D9F1B037D8600C313EE /* MH6ShotsScheduler.m */; };
+		AA092DC91B037D8600C313EE /* MHComputation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DA11B037D8600C313EE /* MHComputation.m */; };
+		AA092DCA1B037D8600C313EE /* MHConnectionBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DA31B037D8600C313EE /* MHConnectionBuffer.m */; };
+		AA092DCB1B037D8600C313EE /* MHConnectionsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DA51B037D8600C313EE /* MHConnectionsHandler.m */; };
+		AA092DCC1B037D8600C313EE /* MHController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DA71B037D8600C313EE /* MHController.m */; };
+		AA092DCD1B037D8600C313EE /* MHDiagnostics.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DA91B037D8600C313EE /* MHDiagnostics.m */; };
+		AA092DCE1B037D8600C313EE /* MHFloodingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DAB1B037D8600C313EE /* MHFloodingProtocol.m */; };
+		AA092DCF1B037D8600C313EE /* MHLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DAD1B037D8600C313EE /* MHLocationManager.m */; };
+		AA092DD01B037D8600C313EE /* MHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DAF1B037D8600C313EE /* MHMessage.m */; };
+		AA092DD41B037D8600C313EE /* MHMultipeerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DB71B037D8600C313EE /* MHMultipeerWrapper.m */; };
+		AA092DD51B037D8600C313EE /* MHPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DB91B037D8600C313EE /* MHPacket.m */; };
+		AA092DD61B037D8600C313EE /* MHPeer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DBB1B037D8600C313EE /* MHPeer.m */; };
+		AA092DD71B037D8600C313EE /* MHRoutingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DBD1B037D8600C313EE /* MHRoutingProtocol.m */; };
+		AA092DD81B037D8600C313EE /* MHPadoc.m in Sources */ = {isa = PBXBuildFile; fileRef = AA092DBF1B037D8600C313EE /* MHPadoc.m */; };
+		AADF73AC1AED41820021052C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF73AB1AED41820021052C /* main.m */; };
+		AADF73AF1AED41820021052C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF73AE1AED41820021052C /* AppDelegate.m */; };
+		AADF73B21AED41820021052C /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF73B11AED41820021052C /* MasterViewController.m */; };
+		AADF73B51AED41820021052C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF73B41AED41820021052C /* DetailViewController.m */; };
+		AADF73B81AED41820021052C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADF73B61AED41820021052C /* Main.storyboard */; };
+		AADF73BA1AED41820021052C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AADF73B91AED41820021052C /* Images.xcassets */; };
+		AADF73BD1AED41820021052C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AADF73BB1AED41820021052C /* LaunchScreen.xib */; };
+		AADF73C91AED41830021052C /* PadocChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF73C81AED41830021052C /* PadocChatTests.m */; };
+		AADF74021AED42350021052C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF74011AED42350021052C /* Message.m */; };
+		AADF74051AED42440021052C /* Peer.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF74041AED42440021052C /* Peer.m */; };
+		AADF740A1AED64CB0021052C /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AADF74091AED64CB0021052C /* ChatMessage.m */; };
+		C0021DCE1C639EC8004DC96C /* MHCBSProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C0021DCD1C639EC8004DC96C /* MHCBSProtocol.m */; };
+		C0021DD11C639EEF004DC96C /* MHDatagram.m in Sources */ = {isa = PBXBuildFile; fileRef = C0021DD01C639EEF004DC96C /* MHDatagram.m */; };
+		C0021DD41C639F46004DC96C /* MHPeerBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = C0021DD31C639F46004DC96C /* MHPeerBuffer.m */; };
+		C0021DD71C649E36004DC96C /* MHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C0021DD61C649E36004DC96C /* MHConfig.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AADF73C31AED41820021052C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AADF739E1AED41820021052C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AADF73A51AED41820021052C;
+			remoteInfo = MultihopChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA092D9A1B037D8600C313EE /* MH6ShotsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MH6ShotsProtocol.h; sourceTree = "<group>"; };
+		AA092D9B1B037D8600C313EE /* MH6ShotsProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MH6ShotsProtocol.m; sourceTree = "<group>"; };
+		AA092D9C1B037D8600C313EE /* MH6ShotsSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MH6ShotsSchedule.h; sourceTree = "<group>"; };
+		AA092D9D1B037D8600C313EE /* MH6ShotsSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MH6ShotsSchedule.m; sourceTree = "<group>"; };
+		AA092D9E1B037D8600C313EE /* MH6ShotsScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MH6ShotsScheduler.h; sourceTree = "<group>"; };
+		AA092D9F1B037D8600C313EE /* MH6ShotsScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MH6ShotsScheduler.m; sourceTree = "<group>"; };
+		AA092DA01B037D8600C313EE /* MHComputation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHComputation.h; sourceTree = "<group>"; };
+		AA092DA11B037D8600C313EE /* MHComputation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHComputation.m; sourceTree = "<group>"; };
+		AA092DA21B037D8600C313EE /* MHConnectionBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHConnectionBuffer.h; sourceTree = "<group>"; };
+		AA092DA31B037D8600C313EE /* MHConnectionBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHConnectionBuffer.m; sourceTree = "<group>"; };
+		AA092DA41B037D8600C313EE /* MHConnectionsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHConnectionsHandler.h; sourceTree = "<group>"; };
+		AA092DA51B037D8600C313EE /* MHConnectionsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHConnectionsHandler.m; sourceTree = "<group>"; };
+		AA092DA61B037D8600C313EE /* MHController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHController.h; sourceTree = "<group>"; };
+		AA092DA71B037D8600C313EE /* MHController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHController.m; sourceTree = "<group>"; };
+		AA092DA81B037D8600C313EE /* MHDiagnostics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDiagnostics.h; sourceTree = "<group>"; };
+		AA092DA91B037D8600C313EE /* MHDiagnostics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDiagnostics.m; sourceTree = "<group>"; };
+		AA092DAA1B037D8600C313EE /* MHFloodingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFloodingProtocol.h; sourceTree = "<group>"; };
+		AA092DAB1B037D8600C313EE /* MHFloodingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFloodingProtocol.m; sourceTree = "<group>"; };
+		AA092DAC1B037D8600C313EE /* MHLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHLocationManager.h; sourceTree = "<group>"; };
+		AA092DAD1B037D8600C313EE /* MHLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHLocationManager.m; sourceTree = "<group>"; };
+		AA092DAE1B037D8600C313EE /* MHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMessage.h; sourceTree = "<group>"; };
+		AA092DAF1B037D8600C313EE /* MHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMessage.m; sourceTree = "<group>"; };
+		AA092DB61B037D8600C313EE /* MHMultipeerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMultipeerWrapper.h; sourceTree = "<group>"; };
+		AA092DB71B037D8600C313EE /* MHMultipeerWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMultipeerWrapper.m; sourceTree = "<group>"; };
+		AA092DB81B037D8600C313EE /* MHPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPacket.h; sourceTree = "<group>"; };
+		AA092DB91B037D8600C313EE /* MHPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPacket.m; sourceTree = "<group>"; };
+		AA092DBA1B037D8600C313EE /* MHPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPeer.h; sourceTree = "<group>"; };
+		AA092DBB1B037D8600C313EE /* MHPeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPeer.m; sourceTree = "<group>"; };
+		AA092DBC1B037D8600C313EE /* MHRoutingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHRoutingProtocol.h; sourceTree = "<group>"; };
+		AA092DBD1B037D8600C313EE /* MHRoutingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRoutingProtocol.m; sourceTree = "<group>"; };
+		AA092DBE1B037D8600C313EE /* MHPadoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPadoc.h; sourceTree = "<group>"; };
+		AA092DBF1B037D8600C313EE /* MHPadoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPadoc.m; sourceTree = "<group>"; };
+		AADF73A61AED41820021052C /* PadocChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PadocChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADF73AA1AED41820021052C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADF73AB1AED41820021052C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AADF73AD1AED41820021052C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AADF73AE1AED41820021052C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AADF73B01AED41820021052C /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		AADF73B11AED41820021052C /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		AADF73B31AED41820021052C /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		AADF73B41AED41820021052C /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		AADF73B71AED41820021052C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AADF73B91AED41820021052C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AADF73BC1AED41820021052C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AADF73C21AED41820021052C /* PadocChat.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PadocChat.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADF73C71AED41830021052C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADF73C81AED41830021052C /* PadocChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PadocChatTests.m; sourceTree = "<group>"; };
+		AADF74001AED422A0021052C /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		AADF74011AED42350021052C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		AADF74031AED423D0021052C /* Peer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Peer.h; sourceTree = "<group>"; };
+		AADF74041AED42440021052C /* Peer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peer.m; sourceTree = "<group>"; };
+		AADF74061AED63CD0021052C /* ChatMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		AADF74091AED64CB0021052C /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		C0021DCC1C639EC8004DC96C /* MHCBSProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCBSProtocol.h; sourceTree = "<group>"; };
+		C0021DCD1C639EC8004DC96C /* MHCBSProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCBSProtocol.m; sourceTree = "<group>"; };
+		C0021DCF1C639EEF004DC96C /* MHDatagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDatagram.h; sourceTree = "<group>"; };
+		C0021DD01C639EEF004DC96C /* MHDatagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDatagram.m; sourceTree = "<group>"; };
+		C0021DD21C639F46004DC96C /* MHPeerBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPeerBuffer.h; sourceTree = "<group>"; };
+		C0021DD31C639F46004DC96C /* MHPeerBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPeerBuffer.m; sourceTree = "<group>"; };
+		C0021DD51C649E36004DC96C /* MHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHConfig.h; path = "../../../GitHub/padoc-lib/Padoc/MHConfig.h"; sourceTree = "<group>"; };
+		C0021DD61C649E36004DC96C /* MHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHConfig.m; path = "../../../GitHub/padoc-lib/Padoc/MHConfig.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AADF73A31AED41820021052C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADF73BF1AED41820021052C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA092D991B037D8600C313EE /* Padoc */ = {
+			isa = PBXGroup;
+			children = (
+				AA092D9A1B037D8600C313EE /* MH6ShotsProtocol.h */,
+				AA092D9B1B037D8600C313EE /* MH6ShotsProtocol.m */,
+				AA092D9C1B037D8600C313EE /* MH6ShotsSchedule.h */,
+				AA092D9D1B037D8600C313EE /* MH6ShotsSchedule.m */,
+				AA092D9E1B037D8600C313EE /* MH6ShotsScheduler.h */,
+				AA092D9F1B037D8600C313EE /* MH6ShotsScheduler.m */,
+				C0021DCC1C639EC8004DC96C /* MHCBSProtocol.h */,
+				C0021DCD1C639EC8004DC96C /* MHCBSProtocol.m */,
+				AA092DA01B037D8600C313EE /* MHComputation.h */,
+				AA092DA11B037D8600C313EE /* MHComputation.m */,
+				C0021DD51C649E36004DC96C /* MHConfig.h */,
+				C0021DD61C649E36004DC96C /* MHConfig.m */,
+				AA092DA21B037D8600C313EE /* MHConnectionBuffer.h */,
+				AA092DA31B037D8600C313EE /* MHConnectionBuffer.m */,
+				AA092DA41B037D8600C313EE /* MHConnectionsHandler.h */,
+				AA092DA51B037D8600C313EE /* MHConnectionsHandler.m */,
+				AA092DA61B037D8600C313EE /* MHController.h */,
+				AA092DA71B037D8600C313EE /* MHController.m */,
+				C0021DCF1C639EEF004DC96C /* MHDatagram.h */,
+				C0021DD01C639EEF004DC96C /* MHDatagram.m */,
+				AA092DA81B037D8600C313EE /* MHDiagnostics.h */,
+				AA092DA91B037D8600C313EE /* MHDiagnostics.m */,
+				AA092DAA1B037D8600C313EE /* MHFloodingProtocol.h */,
+				AA092DAB1B037D8600C313EE /* MHFloodingProtocol.m */,
+				AA092DAC1B037D8600C313EE /* MHLocationManager.h */,
+				AA092DAD1B037D8600C313EE /* MHLocationManager.m */,
+				AA092DAE1B037D8600C313EE /* MHMessage.h */,
+				AA092DAF1B037D8600C313EE /* MHMessage.m */,
+				AA092DB61B037D8600C313EE /* MHMultipeerWrapper.h */,
+				AA092DB71B037D8600C313EE /* MHMultipeerWrapper.m */,
+				AA092DB81B037D8600C313EE /* MHPacket.h */,
+				AA092DB91B037D8600C313EE /* MHPacket.m */,
+				AA092DBE1B037D8600C313EE /* MHPadoc.h */,
+				AA092DBF1B037D8600C313EE /* MHPadoc.m */,
+				AA092DBA1B037D8600C313EE /* MHPeer.h */,
+				AA092DBB1B037D8600C313EE /* MHPeer.m */,
+				C0021DD21C639F46004DC96C /* MHPeerBuffer.h */,
+				C0021DD31C639F46004DC96C /* MHPeerBuffer.m */,
+				AA092DBC1B037D8600C313EE /* MHRoutingProtocol.h */,
+				AA092DBD1B037D8600C313EE /* MHRoutingProtocol.m */,
+			);
+			path = Padoc;
+			sourceTree = "<group>";
+		};
+		AADF739D1AED41820021052C = {
+			isa = PBXGroup;
+			children = (
+				AA092D991B037D8600C313EE /* Padoc */,
+				AADF73A81AED41820021052C /* PadocChat */,
+				AADF73C51AED41820021052C /* PadocChatTests */,
+				AADF73A71AED41820021052C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AADF73A71AED41820021052C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AADF73A61AED41820021052C /* PadocChat.app */,
+				AADF73C21AED41820021052C /* PadocChat.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AADF73A81AED41820021052C /* PadocChat */ = {
+			isa = PBXGroup;
+			children = (
+				AADF73AD1AED41820021052C /* AppDelegate.h */,
+				AADF73AE1AED41820021052C /* AppDelegate.m */,
+				AADF73B01AED41820021052C /* MasterViewController.h */,
+				AADF73B11AED41820021052C /* MasterViewController.m */,
+				AADF73B31AED41820021052C /* DetailViewController.h */,
+				AADF73B41AED41820021052C /* DetailViewController.m */,
+				AADF73B61AED41820021052C /* Main.storyboard */,
+				AADF73B91AED41820021052C /* Images.xcassets */,
+				AADF73BB1AED41820021052C /* LaunchScreen.xib */,
+				AADF73A91AED41820021052C /* Supporting Files */,
+				AADF74001AED422A0021052C /* Message.h */,
+				AADF74011AED42350021052C /* Message.m */,
+				AADF74031AED423D0021052C /* Peer.h */,
+				AADF74041AED42440021052C /* Peer.m */,
+				AADF74061AED63CD0021052C /* ChatMessage.h */,
+				AADF74091AED64CB0021052C /* ChatMessage.m */,
+			);
+			path = PadocChat;
+			sourceTree = "<group>";
+		};
+		AADF73A91AED41820021052C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AADF73AA1AED41820021052C /* Info.plist */,
+				AADF73AB1AED41820021052C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AADF73C51AED41820021052C /* PadocChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				AADF73C81AED41830021052C /* PadocChatTests.m */,
+				AADF73C61AED41830021052C /* Supporting Files */,
+			);
+			path = PadocChatTests;
+			sourceTree = "<group>";
+		};
+		AADF73C61AED41830021052C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AADF73C71AED41830021052C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AADF73A51AED41820021052C /* PadocChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AADF73CC1AED41830021052C /* Build configuration list for PBXNativeTarget "PadocChat" */;
+			buildPhases = (
+				AADF73A21AED41820021052C /* Sources */,
+				AADF73A31AED41820021052C /* Frameworks */,
+				AADF73A41AED41820021052C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PadocChat;
+			productName = MultihopChat;
+			productReference = AADF73A61AED41820021052C /* PadocChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AADF73C11AED41820021052C /* PadocChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AADF73CF1AED41830021052C /* Build configuration list for PBXNativeTarget "PadocChatTests" */;
+			buildPhases = (
+				AADF73BE1AED41820021052C /* Sources */,
+				AADF73BF1AED41820021052C /* Frameworks */,
+				AADF73C01AED41820021052C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AADF73C41AED41820021052C /* PBXTargetDependency */,
+			);
+			name = PadocChatTests;
+			productName = MultihopChatTests;
+			productReference = AADF73C21AED41820021052C /* PadocChat.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AADF739E1AED41820021052C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Sven Reber";
+				TargetAttributes = {
+					AADF73A51AED41820021052C = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					AADF73C11AED41820021052C = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = AADF73A51AED41820021052C;
+					};
+				};
+			};
+			buildConfigurationList = AADF73A11AED41820021052C /* Build configuration list for PBXProject "PadocChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AADF739D1AED41820021052C;
+			productRefGroup = AADF73A71AED41820021052C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AADF73A51AED41820021052C /* PadocChat */,
+				AADF73C11AED41820021052C /* PadocChatTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AADF73A41AED41820021052C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADF73B81AED41820021052C /* Main.storyboard in Resources */,
+				AADF73BD1AED41820021052C /* LaunchScreen.xib in Resources */,
+				AADF73BA1AED41820021052C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADF73C01AED41820021052C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AADF73A21AED41820021052C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADF73AF1AED41820021052C /* AppDelegate.m in Sources */,
+				C0021DD71C649E36004DC96C /* MHConfig.m in Sources */,
+				C0021DD11C639EEF004DC96C /* MHDatagram.m in Sources */,
+				AA092DCF1B037D8600C313EE /* MHLocationManager.m in Sources */,
+				AA092DD41B037D8600C313EE /* MHMultipeerWrapper.m in Sources */,
+				C0021DD41C639F46004DC96C /* MHPeerBuffer.m in Sources */,
+				AADF73B21AED41820021052C /* MasterViewController.m in Sources */,
+				AA092DD61B037D8600C313EE /* MHPeer.m in Sources */,
+				AA092DCA1B037D8600C313EE /* MHConnectionBuffer.m in Sources */,
+				AA092DD01B037D8600C313EE /* MHMessage.m in Sources */,
+				AADF73AC1AED41820021052C /* main.m in Sources */,
+				AA092DCC1B037D8600C313EE /* MHController.m in Sources */,
+				AA092DC81B037D8600C313EE /* MH6ShotsScheduler.m in Sources */,
+				AA092DCD1B037D8600C313EE /* MHDiagnostics.m in Sources */,
+				AA092DC91B037D8600C313EE /* MHComputation.m in Sources */,
+				AA092DCE1B037D8600C313EE /* MHFloodingProtocol.m in Sources */,
+				AA092DD71B037D8600C313EE /* MHRoutingProtocol.m in Sources */,
+				AA092DC61B037D8600C313EE /* MH6ShotsProtocol.m in Sources */,
+				AADF740A1AED64CB0021052C /* ChatMessage.m in Sources */,
+				AADF74021AED42350021052C /* Message.m in Sources */,
+				AADF73B51AED41820021052C /* DetailViewController.m in Sources */,
+				AA092DD81B037D8600C313EE /* MHPadoc.m in Sources */,
+				AA092DD51B037D8600C313EE /* MHPacket.m in Sources */,
+				AA092DC71B037D8600C313EE /* MH6ShotsSchedule.m in Sources */,
+				AA092DCB1B037D8600C313EE /* MHConnectionsHandler.m in Sources */,
+				AADF74051AED42440021052C /* Peer.m in Sources */,
+				C0021DCE1C639EC8004DC96C /* MHCBSProtocol.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADF73BE1AED41820021052C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADF73C91AED41830021052C /* PadocChatTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AADF73C41AED41820021052C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AADF73A51AED41820021052C /* PadocChat */;
+			targetProxy = AADF73C31AED41820021052C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AADF73B61AED41820021052C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AADF73B71AED41820021052C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AADF73BB1AED41820021052C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AADF73BC1AED41820021052C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AADF73CA1AED41830021052C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AADF73CB1AED41830021052C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AADF73CD1AED41830021052C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PadocChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = PadocChat;
+			};
+			name = Debug;
+		};
+		AADF73CE1AED41830021052C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PadocChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = PadocChat;
+			};
+			name = Release;
+		};
+		AADF73D01AED41830021052C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PadocChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = PadocChat;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PadocChat.app/PadocChat";
+			};
+			name = Debug;
+		};
+		AADF73D11AED41830021052C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PadocChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = PadocChat;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PadocChat.app/PadocChat";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AADF73A11AED41820021052C /* Build configuration list for PBXProject "PadocChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADF73CA1AED41830021052C /* Debug */,
+				AADF73CB1AED41830021052C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AADF73CC1AED41830021052C /* Build configuration list for PBXNativeTarget "PadocChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADF73CD1AED41830021052C /* Debug */,
+				AADF73CE1AED41830021052C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AADF73CF1AED41830021052C /* Build configuration list for PBXNativeTarget "PadocChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADF73D01AED41830021052C /* Debug */,
+				AADF73D11AED41830021052C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AADF739E1AED41820021052C /* Project object */;
+}
