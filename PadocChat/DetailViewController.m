@@ -28,9 +28,6 @@
     [messageString appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     
     // Source
-    //GETT
-    NSLog(@"PLOP PLOP PLOP");
-    NSLog(@"detailItem name is : %@, and the ID is : %@", _detailItem.displayName, _detailItem.peerId);
     NSString *displayName;
     if([message.source isEqualToString:[self.padoc getOwnPeer]]){
         displayName = [UIDevice currentDevice].name;
@@ -91,8 +88,6 @@
         // Add all messages to the TextView
         for (int i = 0; i < [[self.detailItem chatMessages] count]; ++i) {
             ChatMessage *message = [[self.detailItem chatMessages] objectAtIndex:i];
-            //GETT
-            NSLog(@"the message received is : %@, from : %@", message.content, message.source);
             [self printMessage:message];
         }
         
@@ -166,7 +161,6 @@
 - (IBAction)send:(id)sender {
     
     // Create a ChatMessage with the entered text and the peer infos
-    //GETT changed source from [UIDevice currentDevice].name to [self.padoc getOwnPeer]
     ChatMessage *chatMsg = [[ChatMessage alloc] initWithSource:[self.padoc getOwnPeer]
                                                       withDate:[NSDate date]
                                                    withContent:self.textField.text];
@@ -184,8 +178,6 @@
     }
     
     NSError *error;
-    //GETT changed socket to padoc and sendMessage to multicastMessage
-    NSLog(@"what message am i sending to peer? : %@, from : %@", ((ChatMessage*)msg.content).content, ((ChatMessage*)msg.content).source);
     [self.padoc multicastMessage:[NSKeyedArchiver archivedDataWithRootObject:msg]
               toDestinations:[[NSArray alloc] initWithObjects:[self.detailItem peerId], nil]
                        error:&error];

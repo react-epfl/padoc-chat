@@ -15,7 +15,6 @@
 
 #define GLOBAL @"global"
 
-//GETT changed MHMulticastSocketDelegate to MHPadocDelegate
 @interface MasterViewController () <MHPadocDelegate>
 
 @property NSMutableArray *objects;
@@ -85,7 +84,6 @@
     }
     [self.tableView reloadData];
     
-    //GETT added self.padoc getOwnPeer to the msg
     Message* msg = [[Message alloc] initWithType:@"discovery"
                                      withContent:[[NSArray alloc] initWithObjects:[UIDevice currentDevice].name, [self.padoc getOwnPeer], nil]];
     
@@ -100,8 +98,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        //GETT
-        NSLog(@"preparingForSegue WTF");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Peer *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
@@ -163,12 +159,6 @@
     
 }
 
-//GETT
-//- (void)mhPadoc:(MHPadoc *)mhPadoc
-//didReceiveMessage:(NSData *)data
-//        fromPeer:(NSString *)peer
-//   withTraceInfo:(NSArray *)traceInfo {
-
 - (void)mhPadoc:(MHPadoc *)mhPadoc
 deliverMessage:(NSData *)data
        fromGroups:(NSArray *)groups {
@@ -176,13 +166,8 @@ deliverMessage:(NSData *)data
     Message* msg = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     if ([msg.type isEqualToString:@"discovery"]) {
-        //GET added NSLog, it works
-        NSLog(@"received discovery message");
         
         // Reply to the discovery request
-        
-        
-        //GETT changed [UIDevice currentDevice].name to NSArray and added peerID
         Message* sentMsg = [[Message alloc] initWithType:@"discovery-reply"
                                              withContent:[[NSArray alloc] initWithObjects:[UIDevice currentDevice].name, [self.padoc getOwnPeer], nil]];
         
@@ -192,7 +177,6 @@ deliverMessage:(NSData *)data
                   toDestinations:groups
                            error:&error];
         
-        //GETT : change peer delivery to group delivery
         // Add the peer that initiated the discovery to the list of peers if not already present
         
         //msgContent is a NSArray containing the name of the peer and his ID.
@@ -200,7 +184,6 @@ deliverMessage:(NSData *)data
         NSString *peerID = [(NSArray*)msg.content objectAtIndex:1];
         
         //create peerObject
-        //GETT changed peer to peerID
         Peer *peerObject = [[Peer alloc] initWithPeerId:peerID withDisplayName:peerDisplayName];
         
         //if peerObject is not in self.objects
@@ -222,21 +205,15 @@ deliverMessage:(NSData *)data
         }
         
     } else if ([msg.type isEqualToString:@"discovery-reply"]) {
-        //GET added NSLog, it works
-        NSLog(@"received dicovery-reply message");
         
-        //GETT changed NSString to NSArray and fetched first object
         NSString *peerDisplayName =[(NSArray*)msg.content firstObject];
         NSString *peerID = [(NSArray*)msg.content objectAtIndex:1];
-        NSLog(@"display name received is %@ and peerID is %@", peerDisplayName, peerID);
         
-        //GETT changed groups to peerID
         Peer *peerObject = [[Peer alloc] initWithPeerId:peerID withDisplayName:peerDisplayName];
         
         if (![self.objects containsObject:peerObject]) {
             [self.objects addObject:peerObject];
             
-            //GETT changed groups to peerID
             NSMutableArray *peerMessages = [self.peersMessages objectForKey:peerID];
             if (peerMessages) {
                 [peerObject setChatMessages:peerMessages];
@@ -248,13 +225,8 @@ deliverMessage:(NSData *)data
         }
         
     } else if ([msg.type isEqualToString:@"chat-text"]) {
-        
-        //GETT changed NSString to NSArray and fetched first object
-        NSLog(@"Received CHAT MSG");
-        NSLog(@"the msg.content is : %@, and the source is : %@", ((ChatMessage*)msg.content).content, ((ChatMessage*)msg.content).source);
         NSString *msgSource = ((ChatMessage*)msg.content).source;
         
-        //GETT changed groups to msgSource
         NSMutableArray *peerMessages = [self.peersMessages objectForKey:msgSource];
         if (peerMessages) {
             [peerMessages addObject:(ChatMessage*)msg.content];
@@ -265,7 +237,6 @@ deliverMessage:(NSData *)data
             for (int i = 0; i < self.objects.count; ++i) {
                 Peer *peerI = [self.objects objectAtIndex:i];
                 
-                //GETT changed groups to msgSource
                 if ([[peerI peerId] isEqualToString:msgSource]) {
                     peerObject = peerI;
                 }
